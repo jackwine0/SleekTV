@@ -1,15 +1,21 @@
-/* Navbar.css */
-
 body {
   font-family: 'Roboto', Arial, sans-serif;
 }
 
 .navbarO {
   width: 100%;
-  background-color: #000; /* Background color for the navbar */
-  color: #fff; /* Text color */
+  background-color: #000;
+  color: #fff;
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.navbarO.navbar-scrolled {
+  background-color: rgba(0, 0, 0, 0.6); /* Change background color on scroll */
 }
 
 .navO {
@@ -24,7 +30,7 @@ body {
 }
 
 .nav-logo {
-  width: 40px; /* Logo width */
+  width: 40px;
   height: auto;
   margin-right: 10px;
 }
@@ -32,7 +38,7 @@ body {
 .nav-logo-text {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fff; /* Orange color for "SleekTV" text */
+  color: #fff;
 }
 
 .navlinks {
@@ -57,7 +63,7 @@ body {
 }
 
 .nav__links li a:hover {
-  color: #580000; /* Change color on hover */
+  color: #580000;
 }
 
 .navbar__icons {
@@ -72,7 +78,7 @@ body {
   background-image: url('https://res.cloudinary.com/duicyr28v/image/upload/v1722935892/icons8-search_tb9xss.svg');
   background-size: cover;
   cursor: pointer;
-  background-color:#580000 ;
+  background-color: #580000;
   border-radius: 50%;
   border: 2px solid white;
   height: 30px;

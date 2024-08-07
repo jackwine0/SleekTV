@@ -1,15 +1,32 @@
-import React, { useState } from "react";
-import "./Navbar.css";
+import React, { useEffect, useState } from 'react';
+import './Navbar.css';
 
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 
   const toggleSearch = () => {
     setShowSearch((prevShowSearch) => !prevShowSearch);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="navbarO">
+    <div className={`navbarO ${scrolled ? 'navbar-scrolled' : ''}`}>
       <nav className="navO">
         <div className="nav-left">
           <img
@@ -21,27 +38,16 @@ const Navbar = () => {
         </div>
         <div className="navlinks">
           <ul className="nav__links">
-            <li>
-              <a href="/home">Home</a>
-            </li>
-            <li>
-              <a href="/browse">Browse</a>
-            </li>
-            <li>
-              <a href="/watchlist">Watchlist</a>
-            </li>
-            <li>
-              <a href="/downloads">Downloads</a>
-            </li>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/browse">Browse</a></li>
+            <li><a href="/watchlist">Watchlist</a></li>
+            <li><a href="/downloads">Downloads</a></li>
           </ul>
         </div>
         <div className="navbar__icons">
           <div className="search" onClick={toggleSearch}></div>
           <div className="profile-avatar">
-            <img
-              src="https://res.cloudinary.com/duicyr28v/image/upload/v1722910237/sleek2_hkvou9.svg"
-              alt="profile"
-            />
+            <img src="https://res.cloudinary.com/duicyr28v/image/upload/v1722910237/sleek2_hkvou9.svg" alt="profile" />
           </div>
         </div>
       </nav>

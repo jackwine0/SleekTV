@@ -1,0 +1,44 @@
+.movie-details {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background-color: #222; /* Dark background for contrast */
+    color: #fff; /* White text color */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+  }
+  
+  .movie-poster {
+    flex-shrink: 0;
+  }
+  
+  .poster-img {
+    width: 200px; /* Fixed width for the poster */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .movie-info {
+    max-width: 600px; /* Limit the width of the movie info section */
+  }
+  
+  .movie-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .movie-overview {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .movie-rating,
+  .movie-release-date {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
