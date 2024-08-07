@@ -1,18 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import './Row.css'; // Import your CSS file for styling
-import { FaHeart, FaRegHeart } from 'react-icons/fa'; // Import heart icons
+import MovieCard from '../MovieCard/MovieCard';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import './Row.css'; // Import CSS file for styling
 
 const Row = ({ title, fetchURL }) => {
   const [movies, setMovies] = useState([]);
-  const [like, setLike] = useState(false); // State for the like button
-  const rowRef = useRef(null); // Create a ref for the row container
+  const [likes, setLikes] = useState([]);
+  const rowRef = useRef(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const response = await axios.get(fetchURL);
         setMovies(response.data.results);
+        setLikes(Array(response.data.results.length).fill(false));
       } catch (error) {
         console.error('Error fetching data: ', error);
       }
@@ -33,8 +36,23 @@ const Row = ({ title, fetchURL }) => {
     }
   };
 
-  const saveShow = () => {
-    setLike(!like); // Toggle the like state
+  const toggleLike = (index) => {
+    setLikes((prevLikes) => {
+      const newLikes = [...prevLikes];
+      newLikes[index] = !newLikes[index];
+
+      // Save liked movies to local storage
+      const likedMovies = newLikes
+        .map((isLiked, i) => isLiked && movies[i])
+        .filter(Boolean);
+
+      localStorage.setItem('likedMovies', JSON.stringify(likedMovies));
+      return newLikes;
+    });
+  };
+
+  const handleMovieClick = (movieId) => {
+    navigate(`/movie/${movieId}`); // Navigate to movie details page
   };
 
   return (
@@ -48,26 +66,15 @@ const Row = ({ title, fetchURL }) => {
           />
         </button>
         <div className="row-slider" ref={rowRef}>
-          {movies.map((item, id) => (
-            <div className="row-item" key={id}>
-              <div className="image-container">
-                <img
-                  className="row-img"
-                  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                  alt={item.title}
-                />
-                <div className="overlay">
-                  <p className="overlay-text">{item.title}</p>
-                </div>
-                <div className="like-button" onClick={saveShow}>
-                  {like ? (
-                    <FaHeart className='like-icon' />
-                  ) : (
-                    <FaRegHeart className='like-icon' />
-                  )}
-                </div>
-              </div>
-            </div>
+          {movies.map((item, index) => (
+            <MovieCard
+              key={item.id}
+              item={item}
+              index={index}
+              likeStatus={likes[index]}
+              toggleLike={toggleLike}
+              handleMovieClick={handleMovieClick}
+            />
           ))}
         </div>
         <button className="nav-button nav-button-right" onClick={scrollRight}>

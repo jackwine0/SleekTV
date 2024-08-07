@@ -1,0 +1,94 @@
+.watchlist {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+}
+
+
+
+.watchlist-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.watchlist-item {
+  width: 23%;
+  margin: 1%;
+  position: relative;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.watchlist-item:hover {
+  transform: translateY(-10px);
+}
+
+.watchlist-card {
+  background-color: #222;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.watchlist-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.watchlist-title {
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  font-size: 24px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  padding: 5px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pagination button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.pagination .active {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+.empty{
+    width: 100vw;
+    height: 100vh;
+}
+

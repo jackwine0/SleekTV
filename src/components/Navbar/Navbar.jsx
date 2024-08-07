@@ -1,39 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const toggleSearch = () => {
-    setShowSearch((prevShowSearch) => !prevShowSearch);
+    setShowSearch(!showSearch);
+  };
+
+  const toggleProfileMenu = () => {
+    setShowProfileMenu(!showProfileMenu);
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className={`navbarO ${scrolled ? 'navbar-scrolled' : ''}`}>
       <nav className="navO">
         <div className="nav-left">
+          <Link to={'/home'}>
           <img
             className="nav-logo"
             src="https://res.cloudinary.com/duicyr28v/image/upload/v1722794255/sleek_logo_ei9agh.svg"
             alt="SleekTV Logo"
           />
+          </Link>
           <span className="nav-logo-text">SleekTV</span>
         </div>
         <div className="navlinks">
@@ -45,9 +47,23 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar__icons">
-          <div className="search" onClick={toggleSearch}></div>
-          <div className="profile-avatar">
-            <img src="https://res.cloudinary.com/duicyr28v/image/upload/v1722910237/sleek2_hkvou9.svg" alt="profile" />
+          <div className="search" onClick={toggleSearch}>
+            
+          </div>
+          <div className="profile-avatar" onClick={toggleProfileMenu}>
+            <img
+              src="https://res.cloudinary.com/duicyr28v/image/upload/v1722910237/sleek2_hkvou9.svg"
+              alt="profile"
+            />
+            {showProfileMenu && (
+              <div className="profile-dropdown">
+                <ul>
+                  <li><a href="/profile">Profile</a></li>
+                  <li><a href="/settings">Settings</a></li>
+                  <li><a href="/logout">Logout</a></li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </nav>
