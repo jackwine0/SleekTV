@@ -1,5 +1,7 @@
+/* Navbar.css */
+
 body {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scroll */
@@ -130,7 +132,7 @@ body {
 }
 
 .profile-dropdown a:hover {
-  color:#8a0000 ;
+  color: #8a0000;
 }
 
 .search-bar {
@@ -162,7 +164,7 @@ body {
 .search {
   width: 24px;
   height: 24px;
-  background-image: url('https://res.cloudinary.com/duicyr28v/image/upload/v1722935892/icons8-search_tb9xss.svg');
+  background-image: url("https://res.cloudinary.com/duicyr28v/image/upload/v1722935892/icons8-search_tb9xss.svg");
   background-size: cover;
   cursor: pointer;
   background-color: #580000;
@@ -170,4 +172,68 @@ body {
   border: 2px solid white;
   height: 30px;
   width: 30px;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 25px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.hamburger .bar.open:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger .bar.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger .bar.open:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .navlinks {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 99;
+  }
+
+  .navlinks.show {
+    display: flex;
+  }
+
+  .nav__links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav__links li {
+    margin: 10px 0;
+  }
+
+  .hamburger {
+    display: flex;
+    
+  }
+
+  .nav-logo-text{
+    display: none;
+  }
 }

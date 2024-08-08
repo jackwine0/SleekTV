@@ -7,13 +7,13 @@ const Footer = () => {
       <div className="footer-links">
         <ul className="foot-links">
           <li>
-            <a href="#">About</a>
+            <a href="/about">About</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="/contact">Contact</a>
           </li>
           <li>
-            <a href="#">Help Center</a>
+            <a href="/help">Help Center</a>
           </li>
         </ul>
       </div>
@@ -29,7 +29,7 @@ const Footer = () => {
       <div className="footer-tc">
         <ul className="tc-links">
           <li>
-            <a href="#">Terms and Conditions</a>
+            <a href="/terms">Terms and Conditions</a>
           </li>
         </ul>
       </div>

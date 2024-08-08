@@ -1,162 +1,137 @@
-/* Container for the entire movie details page */
-.movie-details {
-  padding: 20px;
-  background: linear-gradient(145deg, rgba(6, 6, 6, 1) 0%, rgba(88, 0, 0, 1) 100%);
+.movie-details-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
   color: white;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* Header section with poster and movie info */
-.movie-header {
-  display: flex;
-  margin-bottom: 30px;
+.movie-details-content {
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 90px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
 }
 
-/* Poster image */
-.movie-poster {
-  width: 200px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-right: 20px;
+.movie-title h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
-/* Movie information section */
-.movie-info {
-  flex: 1;
+.movie-title h2 {
+  font-size: 1.5rem;
+  color: #8a0000;
 }
 
-/* Title of the movie */
-.movie-info h1 {
-  font-size: 2.5em;
-  margin: 0;
+.movie-title p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
-/* Release date styling */
-.release-date {
-  font-size: 1.2em;
-  margin: 10px 0;
-}
-
-/* Tagline styling */
-.tagline {
-  font-style: italic;
-  margin: 10px 0;
-}
-
-/* Overview styling */
-.movie-info p {
-  font-size: 1.1em;
-  line-height: 1.6;
-}
-
-/* Rating box styling */
-.rating {
+.trailer-section {
   margin-top: 20px;
-  padding: 10px;
-  background-color: #ffde00;
-  display: inline-block;
-  border-radius: 5px;
 }
 
-/* Rating number styling */
-.rating span {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #000;
+.watch-trailer{
+display: flex;
 }
 
-/* Section for cast members */
-.cast-section {
-  margin-top: 30px;
-}
+.play{
+  flex: 50%;
+  margin-top: 20px;
+} 
 
-/* Heading for cast section */
-.cast-section h3 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
 
-/* Container for list of cast members */
-.cast-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-/* Styling for each cast member */
-.cast-member {
-  text-align: center;
-}
-
-/* Cast member image */
-.cast-member img {
-  width: 80%;
-  height: 80%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Cast member name and character */
-.cast-member p {
-  margin: 5px 0;
-}
-
-/* Similar movies section */
-.similar-movies-section {
-  margin-top: 30px;
-}
-
-/* Heading for similar movies section */
-.similar-movies-section h3 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-/* Container for similar movies */
-.similar-movies {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-/* Styling for each similar movie */
-.similar-movie {
-  text-align: center;
+.play-button {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
   cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
 }
 
-/* Similar movie poster image */
+.play-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.additional-content {
+  margin-top: 50px;
+}
+
+.cast-section,
+.similar-movies-section {
+  margin-bottom: 50px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.cast-list,
+.similar-movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.cast-member,
+.similar-movie {
+  width: 100px;
+  text-align: center;
+}
+
+.cast-member img,
 .similar-movie img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  transition: transform 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
-.similar-movie img:hover{
-  transform: translateY(-10px);
-}
-
-/* Similar movie title */
+.cast-member p,
 .similar-movie p {
-  margin: 5px 0;
-  font-size: 0.9em;
+  font-size: 0.9rem;
 }
 
-/* Show more/less button */
-.show-more {
+.similar-movie {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.similar-movie:hover{
+  transform: scale(1.05);
+}
+
+.trailer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.trailer-content {
+  width: 70%;
+  height: 70%;
+  background-color: black;
+}
+
+.trailer-modal:before {
+  content: '';
   display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #ffde00;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: bold;
-}
-
-.show-more:hover {
-  background-color: #e6c200;
+  padding-top: 56.25%;
 }

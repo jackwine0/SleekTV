@@ -15,6 +15,7 @@ import Downloads from "./pages/Downloads/Downloads";
 import Profile from "./pages/Profile/Profile";
 import Error404 from "./pages/Error404/Error404";
 import "./App.css";
+import Browse from "./pages/Browse/Browse";
 
 const Layout = ({ children }) => (
   <>
@@ -43,6 +44,7 @@ function App() {
           <Route path="/watchlist" element={<Layout><Watchlist /></Layout>} />
           <Route path="/downloads" element={<Layout><Downloads /></Layout>} />
           <Route path="/profile" element={<Layout><Profile /></Layout>} />
+          <Route path="/browse" element={<Layout><Browse /></Layout>} />
 
           {/* 404 Route */}
           <Route path="*" element={<Layout><Error404 /></Layout>} />
